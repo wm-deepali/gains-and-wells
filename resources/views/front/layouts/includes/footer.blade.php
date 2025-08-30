@@ -203,7 +203,7 @@
                 <div class="col-sm-12">
                     <div class="text-left">
                         <span class="cpy-text"> Copyright © 2025 <a href="{{ route('home') }}" class=" font-weight-500">
-                                IndCorp Advisory Services Pvt. Ltd.</a> All Rights Reserved.. &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Website Designed Maintained by <a href="https://webmingo.com" target="_blank">Web Mingo
+                                Gains And Wells LLC.</a> All Rights Reserved.. &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; Website Designed Maintained by <a href="https://webmingo.com" target="_blank">Web Mingo
                 </div>
             </div>
         </div>

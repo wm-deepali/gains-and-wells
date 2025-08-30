@@ -12,7 +12,7 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
-    <title>  IndCorp Advisory Services Pvt. Ltd | India | indcorp</title>
+    <title>  Gains And Wells LLC | India | indcorp</title>
     <!--  <title>Krishna Chikan | <?php echo $__env->yieldContent('title'); ?></title> -->
   
     <link rel="icon" href="<?php echo e(asset('assets/images/favicon.png')); ?>"/>

@@ -24,7 +24,7 @@ Privacy Policy
                                 <h2 class="title">Privacy <span class="text-base-skin">Policy</span></h2>
                             </div>
                             <div class="title-desc">
-                                <p>At IndCorp Advisory Services Pvt. Ltd., we are committed to protecting the privacy and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you interact with our website or services.</p>
+                                <p>At Gains And Wells LLC., we are committed to protecting the privacy and security of your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data when you interact with our website or services.</p>
 
                                 <h5 class="mt-4">1. Information We Collect</h5>
                                 <p>We may collect the following types of personal information:</p>

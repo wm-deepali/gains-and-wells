@@ -102,6 +102,7 @@ Route::controller(FrontController::class)->group(function () {
     Route::get("about-us", 'aboutUs')->name('about-us');
     Route::get("blogs", 'blogs')->name('blogs');
     Route::get('/blog/{slug}', [FrontController::class, 'blogDetails'])->name('blog.details');
+    Route::get('/blog-category/{slug}', [FrontController::class, 'blogCategory'])->name('blog.category');
     Route::get('/contact-us', [FrontController::class, 'contactUs'])->name('contact-us');
     Route::get("career", 'career')->name('career');
     Route::get("markets", 'markets')->name('markets');

@@ -85,4 +85,4 @@
 </body>
 
 </html>
-<?php /**PATH /home/tpmhelpinghand/public_html/gains-and-well.tpmhelpinghand.com/resources/views/layouts/app.blade.php ENDPATH**/ ?>
+<?php /**PATH D:\web-mingo-project\gains-and-wells\resources\views/layouts/app.blade.php ENDPATH**/ ?>

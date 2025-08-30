@@ -1,57 +1,64 @@
 @extends('layouts.app')
 <style>
-    .left-side-container-img img{
-        width:300px;
-        height:110px;
+    .left-side-container-img img {
+        width: 300px;
+        height: 110px;
     }
-.left-side-container-img {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	width: 100%;
-	text-align: center;
-}
-.row.justify-content-center.mx-80 {
-	max-width: 1000px;
-	margin: auto;
-}
-.row.justify-content-center.mx-80 {
-	background: #fff;
-	border-radius: 5px;
-	box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-	padding: ;
-}
-.right-side-form-login {
-	padding: 3rem !important;
-}
-.row.justify-content-center.mx-80 .col-sm-6 {
-	padding: 0;
-}
-.left-side-container-img {
-	background-color: #f2f2f2;
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
-}
-.btn.btn-primary.rg {
-	width: 100%;
-	height: 45px;
-	background-color: #b12e5f;
-	border-color: #b12e5f;
-}
+
+    .left-side-container-img {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+    }
+
+    .row.justify-content-center.mx-80 {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .row.justify-content-center.mx-80 {
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+        padding: ;
+    }
+
+    .right-side-form-login {
+        padding: 3rem !important;
+    }
+
+    .row.justify-content-center.mx-80 .col-sm-6 {
+        padding: 0;
+    }
+
+    .left-side-container-img {
+        background-color: #f2f2f2;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
+    .btn.btn-primary.rg {
+        width: 100%;
+        height: 45px;
+        background-color: #b12e5f;
+        border-color: #b12e5f;
+    }
 </style>
 @section('content')
-<div class="container-fluid">
-    <div class="row justify-content-center mx-80">
-        <div class="col-sm-6">
-            <div class="left-side-container-img">
-                <img src="https://overseasconsultant.online/indcorp/public/assets/img/indcorp.png">
+    <div class="container-fluid">
+        <div class="row justify-content-center mx-80">
+            <div class="col-sm-6">
+                <div class="left-side-container-img">
+                    <img src="{{ asset('front_assets') }}/img/gainsandwells-logo1-.png">
+                </div>
             </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="right-side-form-login ">
-                <form method="POST" action="{{ route('login') }}">
+            <div class="col-sm-6">
+                <div class="right-side-form-login ">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -61,7 +68,8 @@
 
                             <div class="col-sm-12">
                                 <label for="email" class="col-md-4 col-form-label">{{ __('Email Address') }}</label>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -72,11 +80,13 @@
                         </div>
 
                         <div class="row mb-3">
-                            
+
 
                             <div class="col-sm-12">
                                 <label for="password" class="col-md-4 col-form-label ">{{ __('Password') }}</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" type="password"
+                                    class="form-control @error('password') is-invalid @enderror" name="password" required
+                                    autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -113,10 +123,10 @@
                             </div>
                         </div>
                     </form>
+                </div>
             </div>
-        </div>
-        
 
+
+        </div>
     </div>
-</div>
 @endsection

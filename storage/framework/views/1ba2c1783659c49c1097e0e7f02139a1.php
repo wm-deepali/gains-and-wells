@@ -9,20 +9,20 @@
   <meta name="description" content="Overseas">
   <meta name="keywords" content="Overseas">
   <meta name="author" content="Webmingo">
-  <meta name="csrf-token" content="{{ csrf_token() }}" />
+  <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 
   <title> Gains And Wells LLC</title>
-  <!--  <title>Krishna Chikan | @yield('title')</title> -->
+  <!--  <title>Krishna Chikan | <?php echo $__env->yieldContent('title'); ?></title> -->
 
-  <link rel="icon" href="{{asset('assets/images/favicon.png')}}" />
+  <link rel="icon" href="<?php echo e(asset('assets/images/favicon.png')); ?>" />
   <!-- BEGIN VENDOR CSS-->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
   <!-- END VENDOR CSS-->
   <link rel="stylesheet" type="text/css" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
   <!-- END STACK CSS-->
   <!-- BEGIN Page Level CSS-->
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('admin/css/datatable.css') }}">
+  <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('admin/css/datatable.css')); ?>">
   <!-- END Page Level CSS-->
   <!-- BEGIN Custom CSS-->
   <!-- END Custom CSS-->
@@ -31,8 +31,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.4/sweetalert2.min.css">
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('admin/custom/css/header.css') }}">
-  <link rel="stylesheet" type="text/css" href="{{ URL::asset('admin/custom/css/style.css') }}">
+  <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('admin/custom/css/header.css')); ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo e(URL::asset('admin/custom/css/style.css')); ?>">
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
@@ -41,10 +41,10 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
   <script src="https://cdn.ckeditor.com/4.15.0/standard/ckeditor.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-  <script src="{{ URL::asset('admin/js/jquery-ui.min.js') }}" type="text/javascript"></script>
+  <script src="<?php echo e(URL::asset('admin/js/jquery-ui.min.js')); ?>" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.10.4/sweetalert2.min.js"></script>
-  <script src="{{ URL::asset('admin/js/datatable.js') }}" type="text/javascript"></script>
-  <script src="{{ URL::asset('admin/custom/js/header.js') }}" type="text/javascript"></script>
+  <script src="<?php echo e(URL::asset('admin/js/datatable.js')); ?>" type="text/javascript"></script>
+  <script src="<?php echo e(URL::asset('admin/custom/js/header.js')); ?>" type="text/javascript"></script>
 
   <script>
     $.ajaxSetup({
@@ -64,7 +64,7 @@
     <div class="container-fluid">
       <div class="top-main-header d-flex align-items-center">
         <div class="admin-logo">
-          <img src="{{ asset('front_assets') }}/img/gainsandwells-logo1-.png" style="height:40px;">
+          <img src="<?php echo e(asset('front_assets')); ?>/img/gainsandwells-logo1-.png" style="height:40px;">
         </div>
         <div class="ml-auto">
           <div class="btn-group">
@@ -73,13 +73,13 @@
               <i class="fa-light fa-circle-user"></i> Admin
             </button>
             <div class="dropdown-menu keep-open header-dropdown">
-              <a href="{{ route('logout') }}" onclick="event.preventDefault();
+              <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"><i
                   class="fa-light fa-power-off ml-4"></i> Logout</a>
 
 
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                @csrf
+              <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
+                <?php echo csrf_field(); ?>
               </form>
 
 
@@ -107,4 +107,4 @@
       alertify.confirm().set({ 'reverseButtons': true });
       alertify.prompt().set({ 'reverseButtons': true });
     }
-  </script>
+  </script><?php /**PATH D:\web-mingo-project\gains-and-wells\resources\views/admin/top-header.blade.php ENDPATH**/ ?>

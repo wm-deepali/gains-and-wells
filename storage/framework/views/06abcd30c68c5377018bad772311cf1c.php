@@ -1,14 +1,14 @@
-@extends('front.layouts.app')
 
-@section('title')
+
+<?php $__env->startSection('title'); ?>
   Home
-@endsection
+<?php $__env->stopSection(); ?>
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap Icons (required for bi bi-*) -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
   <main>
     <!--        <div class="background-image-section">-->
@@ -330,7 +330,7 @@
               data-uk-grid>
               <div>
                 <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
-                  <img class="uk-margin-remove-bottom" src="{{ asset('front_assets') }}/img/in-lazy.gif"
+                  <img class="uk-margin-remove-bottom" src="<?php echo e(asset('front_assets')); ?>/img/in-lazy.gif"
                     data-src="https://www.indonez.com/html-demo/wave/img/in-wave-icon-6.svg" alt="wave-icon" width="52"
                     height="52" data-uk-img>
                   <h5 class="uk-margin-small-top">Strategies & Discussions</h5>
@@ -338,7 +338,7 @@
               </div>
               <div>
                 <div class="uk-card uk-card-default uk-card-body uk-border-rounded">
-                  <img class="uk-margin-remove-bottom" src="{{ asset('front_assets') }}/img/in-lazy.gif"
+                  <img class="uk-margin-remove-bottom" src="<?php echo e(asset('front_assets')); ?>/img/in-lazy.gif"
                     data-src="https://www.indonez.com/html-demo/wave/img/in-wave-icon-7.svg" alt="wave-icon" width="52"
                     height="52" data-uk-img>
                   <h5 class="uk-margin-small-top">Forecasts & Educations</h5>
@@ -348,7 +348,7 @@
           </div>
           <div class="uk-width-1-2@m">
             <div class="uk-inline uk-dark in-wave-video uk-margin-small-bottom">
-              <img class="uk-border-rounded uk-width-1-1" src="{{ asset('front_assets') }}/img/in-lazy.gif"
+              <img class="uk-border-rounded uk-width-1-1" src="<?php echo e(asset('front_assets')); ?>/img/in-lazy.gif"
                 data-src="https://www.indonez.com/html-demo/wave/img/in-wave-image-1.jpg" alt="wave-video" width="533"
                 height="355" data-uk-img>
               <div class="uk-position-center" data-uk-lightbox="video-autoplay: true;">
@@ -1450,39 +1450,41 @@
           <p class="text-muted">Find answers to the most common questions</p>
         </div>
 
-        @php
+        <?php
           $currentslug = Route::current()->getName();
           $faqs = App\Helpers\Helper::getpagefaq($currentslug);
 
-        @endphp
+        ?>
 
         <!-- Single Accordion Wrapper -->
         <div class="accordion" id="faqAccordion">
 
           <div class="row g-4 align-items-start">
 
-            @if($faqs->isNotEmpty())
-              @foreach($faqs as $index => $faq)
+            <?php if($faqs->isNotEmpty()): ?>
+              <?php $__currentLoopData = $faqs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $faq): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-md-6">
                   <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading{{ $index }}">
-                      <button class="accordion-button {{ $index != 0 ? 'collapsed' : '' }}" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#faq{{ $index }}"
-                        aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" aria-controls="faq{{ $index }}">
-                        {{ $index + 1 }}. {{ $faq->question }}
+                    <h2 class="accordion-header" id="heading<?php echo e($index); ?>">
+                      <button class="accordion-button <?php echo e($index != 0 ? 'collapsed' : ''); ?>" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faq<?php echo e($index); ?>"
+                        aria-expanded="<?php echo e($index == 0 ? 'true' : 'false'); ?>" aria-controls="faq<?php echo e($index); ?>">
+                        <?php echo e($index + 1); ?>. <?php echo e($faq->question); ?>
+
                       </button>
                     </h2>
-                    <div id="faq{{ $index }}" class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
-                      aria-labelledby="heading{{ $index }}" data-bs-parent="#faqAccordion">
+                    <div id="faq<?php echo e($index); ?>" class="accordion-collapse collapse <?php echo e($index == 0 ? 'show' : ''); ?>"
+                      aria-labelledby="heading<?php echo e($index); ?>" data-bs-parent="#faqAccordion">
                       <div class="accordion-body">
-                        {!! $faq->answer !!}
+                        <?php echo $faq->answer; ?>
+
                       </div>
                     </div>
                   </div>
                 </div>
-              @endforeach
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-            @else
+            <?php else: ?>
               <!-- FAQ 1 -->
               <div class="col-md-6">
                 <div class="accordion-item">
@@ -1569,7 +1571,7 @@
                 </div>
               </div>
 
-            @endif
+            <?php endif; ?>
           </div>
 
         </div>
@@ -1740,4 +1742,5 @@
   <script>
     AOS.init();
   </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\web-mingo-project\gains-and-wells\resources\views/front/index.blade.php ENDPATH**/ ?>

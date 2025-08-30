@@ -8,50 +8,51 @@
 
 <head>
   <!-- meta tags -->
-  @php
+  <?php
     $currentslug = Route::current()->getName();
     $seodata = App\Helpers\Helper::getSEOData($currentslug);
-  @endphp
+  ?>
 
   <meta charset="utf-8">
-  
+  <meta name="keywords" content="<?php echo $seodata->meta_keyword ?? 'Gains And Wells LLC'; ?>">
+  <meta name="description" content="<?php echo $seodata->meta_description ?? 'Gains And Wells LLC'; ?>">
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="{!! $seodata->meta_keyword ?? 'Gains And Wells LLC' !!}">
-  <meta name="description" content="{!! $seodata->meta_description ?? 'Gains And Wells LLC' !!}">
   <meta name="author" content="Indonez">
   <meta name="theme-color" content="#FCB42D">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-  @stack('before-styles')
+  <?php echo $__env->yieldPushContent('before-styles'); ?>
   <title>
-    {{ $seodata->meta_title ?? trim(View::yieldContent('title')) }} | {{ config('app.name', 'Gains And Wells LLC') }}
+    <?php echo e($seodata->meta_title ?? trim(View::yieldContent('title'))); ?> | <?php echo e(config('app.name', 'Gains And Wells LLC')); ?>
+
   </title>
 
 
 
   <!-- preload assets -->
-  <link rel="preload" href="{{ asset('front_assets') }}/fonts/fa-brands-400.woff2" as="font" type="font/woff2"
+  <link rel="preload" href="<?php echo e(asset('front_assets')); ?>/fonts/fa-brands-400.woff2" as="font" type="font/woff2"
     crossorigin>
-  <link rel="preload" href="{{ asset('front_assets') }}/fonts/fa-solid-900.woff2" as="font" type="font/woff2"
+  <link rel="preload" href="<?php echo e(asset('front_assets')); ?>/fonts/fa-solid-900.woff2" as="font" type="font/woff2"
     crossorigin>
-  <link rel="preload" href="{{ asset('front_assets') }}/fonts/rubik-v9-latin-regular.woff2" as="font" type="font/woff2"
+  <link rel="preload" href="<?php echo e(asset('front_assets')); ?>/fonts/rubik-v9-latin-regular.woff2" as="font" type="font/woff2"
     crossorigin>
-  <link rel="preload" href="{{ asset('front_assets') }}/fonts/rubik-v9-latin-500.woff2" as="font" type="font/woff2"
+  <link rel="preload" href="<?php echo e(asset('front_assets')); ?>/fonts/rubik-v9-latin-500.woff2" as="font" type="font/woff2"
     crossorigin>
-  <link rel="preload" href="{{ asset('front_assets') }}/fonts/rubik-v9-latin-300.woff2" as="font" type="font/woff2"
+  <link rel="preload" href="<?php echo e(asset('front_assets')); ?>/fonts/rubik-v9-latin-300.woff2" as="font" type="font/woff2"
     crossorigin>
-  <link rel="preload" href="{{ asset('front_assets') }}/css/style.css" as="style">
-  <link rel="preload" href="{{ asset('front_assets') }}/js/vendors/uikit.min.js" as="script">
-  <link rel="preload" href="{{ asset('front_assets') }}/js/utilities.min.js" as="script">
-  <link rel="preload" href="{{ asset('front_assets') }}/js/config-theme.js" as="script">
+  <link rel="preload" href="<?php echo e(asset('front_assets')); ?>/css/style.css" as="style">
+  <link rel="preload" href="<?php echo e(asset('front_assets')); ?>/js/vendors/uikit.min.js" as="script">
+  <link rel="preload" href="<?php echo e(asset('front_assets')); ?>/js/utilities.min.js" as="script">
+  <link rel="preload" href="<?php echo e(asset('front_assets')); ?>/js/config-theme.js" as="script">
   <!-- stylesheet -->
-  <link rel="stylesheet" href="{{ asset('front_assets') }}/css/style.css">
+  <link rel="stylesheet" href="<?php echo e(asset('front_assets')); ?>/css/style.css">
   <!-- uikit -->
-  <script src="{{ asset('front_assets') }}/js/vendors/uikit.min.js"></script>
+  <script src="<?php echo e(asset('front_assets')); ?>/js/vendors/uikit.min.js"></script>
   <!-- favicon -->
-  <link rel="shortcut icon" href="{{ asset('front_assets') }}/img/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="<?php echo e(asset('front_assets')); ?>/img/favicon.ico" type="image/x-icon">
   <!-- touch icon -->
-  <link rel="apple-touch-icon-precomposed" href="{{ asset('front_assets') }}/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="<?php echo e(asset('front_assets')); ?>/img/apple-touch-icon.png">
   <!-- <link href="https://bootstrapmade.com/content/demo/LeadPage/assets/img/favicon.png" rel="icon"> -->
   <!-- <link href="https://bootstrapmade.com/content/demo/LeadPage/assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
 
@@ -71,12 +72,13 @@
 
   <!-- Main CSS File -->
   <link href="https://bootstrapmade.com/content/demo/LeadPage/assets/css/main.css" rel="stylesheet">
-  @stack('after-styles')
+  <?php echo $__env->yieldPushContent('after-styles'); ?>
 
   <!--=====================================
                 CSS LINK PART END
     =======================================-->
-  {!! $seodata->scripts_text ?? '' !!}
+  <?php echo $seodata->scripts_text ?? ''; ?>
+
 </head>
 
 <body>
@@ -95,8 +97,8 @@
         style="height: 80px;background-color: black;">
         <div class="uk-container" data-uk-navbar>
           <div class="uk-navbar-left uk-width-expand uk-flex uk-flex-between">
-            <a class="uk-navbar-item uk-logo" href="{{ Route('index-2') }}">
-              <img src="{{ asset('front_assets') }}/img/gainsandwells-logo1-.png" alt="logo" width="160">
+            <a class="uk-navbar-item uk-logo" href="<?php echo e(Route('index-2')); ?>">
+              <img src="<?php echo e(asset('front_assets')); ?>/img/gainsandwells-logo1-.png" alt="logo" width="160">
             </a>
             <ul class="uk-navbar-nav uk-visible@m">
               <li><a href="/">Home</a>
@@ -105,10 +107,10 @@
               <li><a href="#">About Us<span data-uk-navbar-parent-icon></span></a>
                 <div class="uk-navbar-dropdown">
                   <ul class="uk-nav uk-navbar-dropdown-nav">
-                    <li><a href="{{ Route('about-us') }}">About</a></li>
-                    <li><a href="{{ Route('blogs') }}">Investment Model</a></li>
-                    <li><a href="{{ Route('career') }}">Subsidieries</a></li>
-                    <li><a href="{{ Route('contact-us') }}">Our Team</a></li>
+                    <li><a href="<?php echo e(Route('about-us')); ?>">About</a></li>
+                    <li><a href="<?php echo e(Route('blogs')); ?>">Investment Model</a></li>
+                    <li><a href="<?php echo e(Route('career')); ?>">Subsidieries</a></li>
+                    <li><a href="<?php echo e(Route('contact-us')); ?>">Our Team</a></li>
                   </ul>
                 </div>
               </li>
@@ -131,10 +133,10 @@
                   </ul>
                 </div>
               </li>
-              <li><a href="{{ Route('markets') }}">How it Works</a>
+              <li><a href="<?php echo e(Route('markets')); ?>">How it Works</a>
               </li>
 
-              <!--<li><a href="{{ Route('education') }}">Invest Now</a>-->
+              <!--<li><a href="<?php echo e(Route('education')); ?>">Invest Now</a>-->
               <!--</li>-->
               <!--<li><a href="#">Resources<span data-uk-navbar-parent-icon></span></a>-->
               <!--  <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">-->
@@ -143,10 +145,10 @@
               <!--        <ul class="uk-nav uk-navbar-dropdown-nav">-->
               <!--          <li><a href="https://getuikit.com/docs/introduction">Documentation<i-->
               <!--                class="fas fa-square-arrow-up-right fa-sm"></i></a></li>-->
-              <!--          <li><a href="{{ Route('help-center') }}">Help Center</a></li>-->
-              <!--          <li><a href="{{ Route('customers') }}">Customers</a></li>-->
-              <!--          <li><a href="{{ Route('roadmap') }}">Roadmap</a></li>-->
-              <!--          <li><a href="{{ Route('legal-docs') }}">Legal Docs<i class="fas fa-gavel fa-sm"></i></a></li>-->
+              <!--          <li><a href="<?php echo e(Route('help-center')); ?>">Help Center</a></li>-->
+              <!--          <li><a href="<?php echo e(Route('customers')); ?>">Customers</a></li>-->
+              <!--          <li><a href="<?php echo e(Route('roadmap')); ?>">Roadmap</a></li>-->
+              <!--          <li><a href="<?php echo e(Route('legal-docs')); ?>">Legal Docs<i class="fas fa-gavel fa-sm"></i></a></li>-->
               <!--        </ul>-->
               <!--      </div>-->
               <!--      <div>-->
@@ -163,7 +165,7 @@
           <div class="uk-navbar-right uk-width-auto">
             <div class="uk-navbar-item uk-visible@m">
               <div class="in-optional-nav">
-                <a href="{{ Route('signin') }}" class="uk-button uk-button-text"><i
+                <a href="<?php echo e(Route('signin')); ?>" class="uk-button uk-button-text"><i
                     class="fas fa-user-circle uk-margin-small-right"></i>Log in</a>
                 <a href="#" class="uk-button uk-button-primary uk-button-small uk-border-pill">Sign up</a>
               </div>
@@ -195,7 +197,7 @@
   </header>
   <!-- header end -->
 
-  @yield('content')
+  <?php echo $__env->yieldContent('content'); ?>
 
 
   <!-- footer begin -->
@@ -205,7 +207,7 @@
         <div class="uk-grid-medium" data-uk-grid="">
           <div class="uk-width-expand@m">
             <div class="footer-logo">
-              <img class="uk-display-block" src="{{ asset('front_assets') }}/img/gainsandwells-logo1.png"
+              <img class="uk-display-block" src="<?php echo e(asset('front_assets')); ?>/img/gainsandwells-logo1.png"
                 alt="footer-logo" width="134" height="23" data-uk-img="">
             </div>
             <p class="uk-text-large uk-margin-small-top">Trade with financial thinking.</p>
@@ -236,10 +238,10 @@
               <div style="flex-direction:column;">
                 <h4><span>Company</span></h4>
                 <ul class="uk-list uk-link-text">
-                  <li><a href="{{ Route('about-us') }}">Aboute us</a></li>
-                  <li><a href="{{ Route('blogs') }}">Blogs</a></li>
-                  <li><a href="{{ Route('faq') }}">FAQ</a></li>
-                  <li><a href="{{ Route('contact-us') }}">Contact us</a></li>
+                  <li><a href="<?php echo e(Route('about-us')); ?>">Aboute us</a></li>
+                  <li><a href="<?php echo e(Route('blogs')); ?>">Blogs</a></li>
+                  <li><a href="<?php echo e(Route('faq')); ?>">FAQ</a></li>
+                  <li><a href="<?php echo e(Route('contact-us')); ?>">Contact us</a></li>
                 </ul>
               </div>
             </div>
@@ -262,36 +264,36 @@
                   data-uk-grid="">
                   <div>
                     <div class="uk-card uk-card-default uk-card-small uk-card-body">
-                      <img src="{{ asset('front_assets') }}/img/in-lazy.gif"
-                        data-src="{{ asset('front_assets') }}/img/in-wave-visa.svg" alt="wave-payment" width="59"
+                      <img src="<?php echo e(asset('front_assets')); ?>/img/in-lazy.gif"
+                        data-src="<?php echo e(asset('front_assets')); ?>/img/in-wave-visa.svg" alt="wave-payment" width="59"
                         height="22" data-uk-img="">
                     </div>
                   </div>
                   <div>
                     <div class="uk-card uk-card-default uk-card-small uk-card-body">
-                      <img src="{{ asset('front_assets') }}/img/in-lazy.gif"
-                        data-src="{{ asset('front_assets') }}/img/in-wave-mastercard.svg" alt="wave-payment" width="59"
+                      <img src="<?php echo e(asset('front_assets')); ?>/img/in-lazy.gif"
+                        data-src="<?php echo e(asset('front_assets')); ?>/img/in-wave-mastercard.svg" alt="wave-payment" width="59"
                         height="22" data-uk-img="">
                     </div>
                   </div>
                   <div>
                     <div class="uk-card uk-card-default uk-card-small uk-card-body">
-                      <img src="{{ asset('front_assets') }}/img/in-lazy.gif"
-                        data-src="{{ asset('front_assets') }}/img/in-wave-skrill.svg" alt="wave-payment" width="59"
+                      <img src="<?php echo e(asset('front_assets')); ?>/img/in-lazy.gif"
+                        data-src="<?php echo e(asset('front_assets')); ?>/img/in-wave-skrill.svg" alt="wave-payment" width="59"
                         height="22" data-uk-img="">
                     </div>
                   </div>
                   <div>
                     <div class="uk-card uk-card-default uk-card-small uk-card-body">
-                      <img src="{{ asset('front_assets') }}/img/in-lazy.gif"
-                        data-src="{{ asset('front_assets') }}/img/in-wave-paypal.svg" alt="wave-payment" width="59"
+                      <img src="<?php echo e(asset('front_assets')); ?>/img/in-lazy.gif"
+                        data-src="<?php echo e(asset('front_assets')); ?>/img/in-wave-paypal.svg" alt="wave-payment" width="59"
                         height="22" data-uk-img="">
                     </div>
                   </div>
                   <div>
                     <div class="uk-card uk-card-default uk-card-small uk-card-body uk-visible@m">
-                      <img src="{{ asset('front_assets') }}/img/in-lazy.gif"
-                        data-src="{{ asset('front_assets') }}/img/in-wave-neteller.svg" alt="wave-payment" width="59"
+                      <img src="<?php echo e(asset('front_assets')); ?>/img/in-lazy.gif"
+                        data-src="<?php echo e(asset('front_assets')); ?>/img/in-wave-neteller.svg" alt="wave-payment" width="59"
                         height="22" data-uk-img="">
                     </div>
                   </div>
@@ -343,11 +345,11 @@
   </a>
   <!-- to top end -->
   <!-- javascript -->
-  <script src="{{ asset('front_assets') }}/js/utilities.min.js"></script>
-  <script src="{{ asset('front_assets') }}/js/config-theme.js"></script>
+  <script src="<?php echo e(asset('front_assets')); ?>/js/utilities.min.js"></script>
+  <script src="<?php echo e(asset('front_assets')); ?>/js/config-theme.js"></script>
 </body>
 
 
 <!-- Mirrored from www.indonez.com/html-demo/wave/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 22 Aug 2025 04:30:58 GMT -->
 
-</html>
+</html><?php /**PATH D:\web-mingo-project\gains-and-wells\resources\views/front/layouts/app.blade.php ENDPATH**/ ?>

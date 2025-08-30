@@ -24,7 +24,7 @@ Cookies Policy
                                 <h2 class="title">Cookies <span class="text-base-skin">Policy</span></h2>
                             </div>
                             <div class="title-desc">
-                                <p>At IndCorp Advisory Services Pvt. Ltd., we use cookies and similar tracking technologies to enhance your browsing experience, analyze site traffic, and personalize content. This Cookies Policy explains what cookies are, how we use them, and your choices regarding their usage.</p>
+                                <p>At Gains And Wells LLC., we use cookies and similar tracking technologies to enhance your browsing experience, analyze site traffic, and personalize content. This Cookies Policy explains what cookies are, how we use them, and your choices regarding their usage.</p>
 
                                 <h5 class="mt-4">1. What are Cookies?</h5>
                                 <p>Cookies are small text files stored on your device when you visit a website. They help us recognize your browser and remember information such as your preferences or login status for future visits.</p>

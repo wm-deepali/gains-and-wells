@@ -1,10 +1,8 @@
-@extends('front.layouts.app')
-
-@section('title')
+<?php $__env->startSection('title'); ?>
   FAQ
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
   <main>
     <!-- Bootstrap CSS -->
@@ -19,7 +17,7 @@
           <p class="text-muted">Find answers to the most common questions</p>
         </div>
 
-        @php
+        <?php
           use App\Models\Faq;
           use App\Models\Page;
 
@@ -30,35 +28,37 @@
           if ($page) {
             $faqs = Faq::where('page_id', $page->id)->get();
           }
-        @endphp
+        ?>
 
         <!-- Single Accordion Wrapper -->
         <div class="accordion" id="faqAccordion">
 
           <div class="row g-4 align-items-start">
 
-            @if($faqs->isNotEmpty())
-              @foreach($faqs as $index => $faq)
+            <?php if($faqs->isNotEmpty()): ?>
+              <?php $__currentLoopData = $faqs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $faq): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="col-md-6">
                   <div class="accordion-item">
-                    <h2 class="accordion-header" id="heading{{ $index }}">
-                      <button class="accordion-button {{ $index != 0 ? 'collapsed' : '' }}" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#faq{{ $index }}"
-                        aria-expanded="{{ $index == 0 ? 'true' : 'false' }}" aria-controls="faq{{ $index }}">
-                        {{ $index + 1 }}. {{ $faq->question }}
+                    <h2 class="accordion-header" id="heading<?php echo e($index); ?>">
+                      <button class="accordion-button <?php echo e($index != 0 ? 'collapsed' : ''); ?>" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#faq<?php echo e($index); ?>"
+                        aria-expanded="<?php echo e($index == 0 ? 'true' : 'false'); ?>" aria-controls="faq<?php echo e($index); ?>">
+                        <?php echo e($index + 1); ?>. <?php echo e($faq->question); ?>
+
                       </button>
                     </h2>
-                    <div id="faq{{ $index }}" class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
-                      aria-labelledby="heading{{ $index }}" data-bs-parent="#faqAccordion">
+                    <div id="faq<?php echo e($index); ?>" class="accordion-collapse collapse <?php echo e($index == 0 ? 'show' : ''); ?>"
+                      aria-labelledby="heading<?php echo e($index); ?>" data-bs-parent="#faqAccordion">
                       <div class="accordion-body">
-                        {!! $faq->answer !!}
+                        <?php echo $faq->answer; ?>
+
                       </div>
                     </div>
                   </div>
                 </div>
-              @endforeach
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-            @else
+            <?php else: ?>
               <!-- FAQ 1 -->
               <div class="col-md-6">
                 <div class="accordion-item">
@@ -145,7 +145,7 @@
                 </div>
               </div>
 
-            @endif
+            <?php endif; ?>
           </div>
 
         </div>
@@ -189,4 +189,5 @@
 
   </main>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\web-mingo-project\gains-and-wells\resources\views/front/faq.blade.php ENDPATH**/ ?>

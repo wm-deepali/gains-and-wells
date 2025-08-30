@@ -24,7 +24,7 @@ Terms & Conditions
                                 <h2 class="title">Terms & <span class="text-base-skin">Conditions</span></h2>
                             </div>
                             <div class="title-desc">
-                                <p>Welcome to IndCorp Advisory Services Pvt. Ltd. By accessing or using our website, you agree to be bound by the following terms and conditions. Please read them carefully before using our services.</p>
+                                <p>Welcome to Gains And Wells LLC. By accessing or using our website, you agree to be bound by the following terms and conditions. Please read them carefully before using our services.</p>
 
                                 <h5 class="mt-4">1. Acceptance of Terms</h5>
                                 <p>By using this website, you confirm that you have read, understood, and agreed to these terms. If you do not agree with any part of the terms, you should discontinue the use of our website.</p>
@@ -33,7 +33,7 @@ Terms & Conditions
                                 <p>You agree to use this website only for lawful purposes and in a way that does not infringe upon the rights or restrict the use and enjoyment of the website by others.</p>
 
                                 <h5 class="mt-4">3. Intellectual Property</h5>
-                                <p>All content on this website, including but not limited to text, graphics, logos, images, and software, is the property of IndCorp Advisory Services Pvt. Ltd. and is protected by copyright and intellectual property laws. You may not use any content without our express written permission.</p>
+                                <p>All content on this website, including but not limited to text, graphics, logos, images, and software, is the property of Gains And Wells LLC. and is protected by copyright and intellectual property laws. You may not use any content without our express written permission.</p>
 
                                 <h5 class="mt-4">4. Limitation of Liability</h5>
                                 <p>We do our best to ensure the accuracy of the information on our website, but we make no warranties or guarantees. We are not responsible for any loss or damage arising from the use of this site.</p>

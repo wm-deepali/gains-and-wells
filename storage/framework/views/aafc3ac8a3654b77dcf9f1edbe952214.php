@@ -1,12 +1,12 @@
-@extends('front.layouts.app')
 
-@section('title')
+
+<?php $__env->startSection('title'); ?>
 	Blog
-@endsection
-@section('pagetitle')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('pagetitle'); ?>
 blog
-@stop
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
 	<main data-title="blog">
 		<!-- blog content begin -->
@@ -15,20 +15,22 @@ blog
 				<div class="uk-grid" data-uk-grid>
 					<div class="uk-width-2-3@m">
 						<div class="in-blog-1" data-uk-grid>
-							@if($blogs->count())
-								@foreach($blogs as $blog)
+							<?php if($blogs->count()): ?>
+								<?php $__currentLoopData = $blogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $blog): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 									<div class="in-stretch">
 										<article class="uk-card uk-card-default uk-border-rounded">
 											<div class="uk-card-media-top">
-												<img src="{{ asset('storage/blogs/' . $blog->image) }}"
+												<img src="<?php echo e(asset('storage/blogs/' . $blog->image)); ?>"
 													alt="The typical U.S. household is spending $445 more a month due to inflation">
 											</div>
 											<div class="uk-card-body">
 												<h3>
-													<a href={{ route('blog.details', $blog->url) }}
-														class="link-primary text-decoration-none">{{ $blog->title }}</a>
+													<a href=<?php echo e(route('blog.details', $blog->url)); ?>
+
+														class="link-primary text-decoration-none"><?php echo e($blog->title); ?></a>
 												</h3>
-												<p>{{ Str::limit(strip_tags($blog->short_description), 150) }}
+												<p><?php echo e(Str::limit(strip_tags($blog->short_description), 150)); ?>
+
 												</p>
 												<div class="uk-flex">
 													<div class="uk-margin-small-right">
@@ -38,13 +40,15 @@ blog
 													</div>
 													<div class="uk-flex uk-flex-middle">
 														<p class="uk-text-small uk-text-muted uk-margin-remove">
-															{{ $blog->author ?? 'Admin' }}
+															<?php echo e($blog->author ?? 'Admin'); ?>
+
 															<span class="uk-margin-small-left uk-margin-small-right">•</span>
 														</p>
 													</div>
 													<div class="uk-flex uk-flex-middle">
 														<p class="uk-text-small uk-text-muted uk-margin-remove">
-															{{ \Carbon\Carbon::parse($blog->publish_date)->format('F d, Y') }}
+															<?php echo e(\Carbon\Carbon::parse($blog->publish_date)->format('F d, Y')); ?>
+
 
 														</p>
 													</div>
@@ -52,49 +56,50 @@ blog
 											</div>
 											<div class="uk-card-footer uk-clearfix">
 												<div class="uk-float-left">
-													<span class="uk-label in-label-small">{{ $blog->blogCategory->name}}</span>
+													<span class="uk-label in-label-small"><?php echo e($blog->blogCategory->name); ?></span>
 												</div>
 												<div class="uk-float-right">
-													<a href={{ route('blog.details', $blog->url) }}
+													<a href=<?php echo e(route('blog.details', $blog->url)); ?>
+
 														class="uk-button uk-button-text">Read more</a>
 												</div>
 											</div>
 										</article>
 									</div>
 
-								@endforeach
+								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-							@endif
+							<?php endif; ?>
 						</div>
 						<!-- pagination begin -->
-						@if ($blogs->lastPage() > 1)
+						<?php if($blogs->lastPage() > 1): ?>
 							<div class="pagination-block">
-								{{-- Previous Page Link --}}
-								@if ($blogs->onFirstPage())
+								
+								<?php if($blogs->onFirstPage()): ?>
 									<span class="page-numbers disabled"><i class="icon-arrow-left"></i></span>
-								@else
-									<a class="page-numbers prev" href="{{ $blogs->previousPageUrl() }}"><i
+								<?php else: ?>
+									<a class="page-numbers prev" href="<?php echo e($blogs->previousPageUrl()); ?>"><i
 											class="icon-arrow-left"></i></a>
-								@endif
+								<?php endif; ?>
 
-								{{-- Pagination Elements --}}
-								@for ($i = 1; $i <= $blogs->lastPage(); $i++)
-									@if ($i == $blogs->currentPage())
-										<span class="page-numbers current">{{ $i }}</span>
-									@else
-										<a class="page-numbers" href="{{ $blogs->url($i) }}">{{ $i }}</a>
-									@endif
-								@endfor
+								
+								<?php for($i = 1; $i <= $blogs->lastPage(); $i++): ?>
+									<?php if($i == $blogs->currentPage()): ?>
+										<span class="page-numbers current"><?php echo e($i); ?></span>
+									<?php else: ?>
+										<a class="page-numbers" href="<?php echo e($blogs->url($i)); ?>"><?php echo e($i); ?></a>
+									<?php endif; ?>
+								<?php endfor; ?>
 
-								{{-- Next Page Link --}}
-								@if ($blogs->hasMorePages())
-									<a class="page-numbers next" href="{{ $blogs->nextPageUrl() }}"><i
+								
+								<?php if($blogs->hasMorePages()): ?>
+									<a class="page-numbers next" href="<?php echo e($blogs->nextPageUrl()); ?>"><i
 											class="icon-arrow-right"></i></a>
-								@else
+								<?php else: ?>
 									<span class="page-numbers disabled"><i class="icon-arrow-right"></i></span>
-								@endif
+								<?php endif; ?>
 							</div>
-						@endif
+						<?php endif; ?>
 						<!-- pagination end -->
 					</div>
 					<div class="uk-width-expand@m">
@@ -111,13 +116,14 @@ blog
 							<div class="uk-card uk-card-default uk-card-body uk-border-rounded">
 								<h5 class="uk-heading-bullet uk-text-uppercase uk-margin-remove-bottom">Categories</h5>
 								<ul class="uk-list widget-categories">
-									@foreach($categories as $category)
+									<?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 										<li>
-											<a href="{{ route('blog.category', $category->url) }}">
-												{{ $category->name }}
+											<a href="<?php echo e(route('blog.category', $category->url)); ?>">
+												<?php echo e($category->name); ?>
+
 											</a>
 										</li>
-									@endforeach
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</ul>
 							</div>
 						</aside>
@@ -127,22 +133,24 @@ blog
 							<div class="uk-card uk-card-default uk-card-body uk-border-rounded">
 								<h5 class="uk-heading-bullet uk-text-uppercase uk-margin-remove-bottom">Latest News</h5>
 								<ul class="uk-list uk-list-divider uk-list-large widget-latest">
-									@foreach($trendingPosts as $post)
+									<?php $__currentLoopData = $trendingPosts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 										<li>
 											<div class="post-img">
-												<img width="80" height="80" src="{{ asset('storage/blogs/' . $post->image) }}"
-													alt="{{ $post->image_alt }}">
+												<img width="80" height="80" src="<?php echo e(asset('storage/blogs/' . $post->image)); ?>"
+													alt="<?php echo e($post->image_alt); ?>">
 											</div>
 											<div class="post-detail">
 												<span class="post-date">
-													{{ \Carbon\Carbon::parse($post->publish_date)->format('F d, Y') }}
+													<?php echo e(\Carbon\Carbon::parse($post->publish_date)->format('F d, Y')); ?>
+
 												</span>
-												<a href="{{ route('blog.details', $post->url) }}">
-													{{ \Illuminate\Support\Str::limit($post->title, 40) }}
+												<a href="<?php echo e(route('blog.details', $post->url)); ?>">
+													<?php echo e(\Illuminate\Support\Str::limit($post->title, 40)); ?>
+
 												</a>
 											</div>
 										</li>
-									@endforeach
+									<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								</ul>
 							</div>
 						</aside>
@@ -162,4 +170,5 @@ blog
 		<!-- blog content end -->
 	</main>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('front.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\web-mingo-project\gains-and-wells\resources\views/front/blog.blade.php ENDPATH**/ ?>
