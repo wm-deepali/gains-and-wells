@@ -1,0 +1,1 @@
+<?php /**PATH /home/overseasconsulta/public_html/indcorp/resources/views/front/msme-attention.blade.php ENDPATH**/ ?>

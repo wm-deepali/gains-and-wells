@@ -1,0 +1,1 @@
+<?php /**PATH /home/overseasconsulta/public_html/indcorp/resources/views/front/corp-legal-compliances.blade.php ENDPATH**/ ?>

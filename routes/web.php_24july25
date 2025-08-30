@@ -1,0 +1,289 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontController;
+
+use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\Admin\StateController;
+use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\SeoMetaController;
+use App\Http\Controllers\Admin\BlogCategoryController;
+use App\Http\Controllers\Admin\CommonController;
+use App\Http\Controllers\Admin\FeedbackController;
+use App\Http\Controllers\Admin\ContactUsController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\ProfileSettingController;
+use App\Http\Controllers\Admin\LogoutController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\SectionSettingController;
+use App\Http\Controllers\Admin\BusinessController;
+use App\Http\Controllers\Admin\VisaController;
+use App\Http\Controllers\Admin\QuotationController;
+use App\Http\Controllers\Admin\OfferController;
+use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ServiceController;
+use Illuminate\Support\Facades\Artisan;
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider and all of them will
+| be assigned to the "web" middleware group. Make something great!
+|
+*/
+Route::get('/cache', function() {
+    \Artisan::call('cache:clear');
+    \Artisan::call('config:clear');
+    \Artisan::call('route:clear');
+    // \Artisan::call('optimize');
+    dd('cleared');
+});
+Route::controller(FrontController::class)->group(function() {
+ Route::get('/', [FrontController::class, 'home'])->name('home');
+
+
+Route::post('/home', [FrontController::class, 'submit_home'])->name('home.submit');
+
+    Route::get("about-us",'aboutUs')->name('about-us');
+    Route::get("golden-visa-for-doctors-in-uae-dubai",'doctor')->name('golden-visa-for-doctors-in-uae-dubai');
+     Route::get("golden-visa-for-investor-in-uae-dubai",'investor')->name('golden-visa-for-investor-in-uae-dubai');
+      Route::get("golden-visa-for-entreprenuers-in-uae-dubai",'entreprenuers')->name('golden-visa-for-entreprenuers-in-uae-dubai');
+       Route::get("golden-visa-for-exeptional-talents-in-uae-dubai",'exeptional')->name('golden-visa-for-exeptional-talents-in-uae-dubai');
+       Route::get("golden-visa-for-students-in-uae-dubai",'students')->name('golden-visa-for-students-in-uae-dubai');
+       
+    Route::get("blogs",'blogs')->name('blogs');
+    Route::get("career-with-us",'career')->name('career-with-us');
+    Route::get("faq",'faq')->name('faq');
+   Route::get('/contact-us', [FrontController::class, 'contactUs'])->name('contact-us'); 
+Route::post('/submit-quote', [FrontController::class, 'submitQuote'])->name('submit.quote'); 
+    Route::get("become-a-channel-partner",'becomeAchannelPartner')->name('become-a-channel-partner');
+    Route::get("business-visa",'businessVisa')->name('business-visa');
+    Route::get("company-setup-offer",'companySetupOffer')->name('company-setup-offer');
+    Route::post('/company-setup-offer', [FrontController::class, 'submit'])->name('company-setup-offer');
+     Route::post('/offer-submit-data', [FrontController::class, 'submitOffer'])->name('offer-submit-data');
+    Route::get("cost-calculation",'costCalculation')->name('cost-calculation');
+    Route::get("sharjah-publishing-city-spc",'spc')->name('sharjah-publishing-city-spc');
+     Route::post('/sharjah-publishing-city-spc', [FrontController::class, 'submit_spc'])->name('spc.submit_spc');
+    Route::get("sharjah-media-city-shams",'shams')->name('sharjah-media-city-shams');
+    Route::post('/sharjah-media-city-shams', [FrontController::class, 'submit_shams'])->name('shams.submit_shams');
+    Route::get("ifza-company-setup",'ifzaCompanySetup')->name('ifza-company-setup');
+    Route::post('/submit-ifza', [IfzaCompanySetupController::class, 'submit'])->name('ifzaCompanySetup.submit_ifza');
+
+    Route::get("meydan-feezone",'meydanFeezone')->name('meydan-feezone');
+     Route::post('/ifzaCompanySetup', [FrontController::class, 'submit_meydanFeezone'])->name('meydanFeezone.submit_meydanFeezone');
+    Route::get("rakez-free-zone-business-setup",'rakez')->name('rakez-free-zone-business-setup');
+    Route::post('/rakez-free-zone-business-setup', [FrontController::class, 'submit_rakez'])->name('rakez.submit_rakez');
+    Route::get("azman-free-zone-business-setup",'azman')->name('azman-free-zone-business-setup');
+    Route::post('/azman-free-zone-business-setup', [FrontController::class, 'submit_azman'])->name('azman.submit_azman');
+    
+    Route::get("anc-free-zone-business-setup",'anc')->name('anc-free-zone-business-setup');
+     Route::post('/anc-free-zone-business-setup', [FrontController::class, 'submit_anc'])->name('anc.submit_anc');
+    Route::get("srtip-free-zone-business-setup",'srtip')->name('srtip-free-zone-business-setup');
+     Route::post('/srtip-free-zone-business-setup', [FrontController::class, 'submit_srtip'])->name('srtip.submit_srtip');
+    Route::get("uae-free-zone-business-setup",'uaeFreeZoneBusinessSetup')->name('uae-free-zone-business-setup');
+    Route::get("whatismainland",'whatismainland')->name('whatismainland');
+    Route::get("dubai-commercial-license-services",'dubaicommercial')->name('dubai-commercial-license-services');
+    
+     Route::post('/dubai-commercial-license-services', [FrontController::class, 'submit_dubaicommercial'])->name('dubaicommercial.submit_dubaicommercial');
+    Route::get("business-setup-in-dubai-mainland",'businessSetupInDubaiMainland')->name('business-setup-in-dubai-mainland');
+    
+      Route::post('/business-setup-in-dubai-mainland', [FrontController::class, 'submit_businessSetupInDubaiMainland'])->name('businessSetupInDubaiMainland.submit_businessSetupInDubaiMainland');
+    Route::get("required-documents-for-business-setup-dubai-uae",'requireDocument')->name('required-documents-for-business-setup-dubai-uae');
+    
+    Route::post('/required-documents-for-business-setup-dubai-uae', [FrontController::class, 'submit_requireDocument'])
+    ->name('requireDocument.submit_requireDocument');
+    Route::get("dubai-residency-visa",'dubaiResidencyVisa')->name('dubai-residency-visa');
+    Route::get("dubai-custom-pro",'dubaiCustomPro')->name('dubai-custom-pro');
+    Route::get("open-bank-account-in-uae-dubai",'bankAccount')->name('open-bank-account-in-uae-dubai');
+    Route::get("golden-visa-uae-dubai",'goldenVisa')->name('golden-visa-uae-dubai');
+    Route::get("visa/{slug}",'visapage')->name('visa');
+    Route::get("pro-services",'proServices')->name('pro-services');
+    Route::get("mea-mofa-attestations",'meaMofaAttestations')->name('mea-mofa-attestations');
+    Route::get("tax-residency",'taxResidency')->name('tax-residency');
+    Route::get("bank-account-opening-in-uae",'bankAccountinUAE')->name('bank-account-opening-in-uae');
+    Route::get("it-services",'itServices')->name('it-services');
+    Route::get("website-design-development",'websiteDesignDevelopment')->name('website-design-development');
+     Route::post('/website-design-development', [FrontController::class, 'submit_websiteDesignDevelopment'])->name('websiteDesignDevelopment.submit_websiteDesignDevelopment');
+    Route::get("mobile-apps-anroid-ios-development",'mobileAppDevelopment')->name('mobile-apps-anroid-ios-development');
+     Route::post('/mobile-apps-anroid-ios-development', [FrontController::class, 'submit_mobileAppDevelopment'])->name('mobileAppDevelopment.submit_mobileAppDevelopment');
+    Route::get("digital-marketing-company",'digitalAgency')->name('digital-marketing-company');
+       Route::post('/digital-marketing-company', [FrontController::class, 'submit_digitalAgency'])->name('digitalAgency.submit_digitalAgency');
+    
+    Route::get("graphic-design-video-creation",'graphicDesign')->name('graphic-design-video-creation');
+     Route::post('/graphic-design-video-creation', [FrontController::class, 'submit_graphicDesign'])->name('graphicDesign.submit_graphicDesign');
+    Route::get("adwords-ppc-campaigns",'adwordsPpcCampaigns')->name('adwords-ppc-campaigns');
+    Route::get("social-media-marketing",'socialMediaMarketing')->name('social-media-marketing');
+      Route::post('/social-media-marketing', [FrontController::class, 'submit_socialMediaMarketing'])->name('socialMediaMarketing.submit_socialMediaMarketing');
+    Route::get("search-engine-optimization",'searchEngineOptimization')->name('search-engine-optimization');
+    Route::post('/search-engine-optimization', [FrontController::class, 'submit_searchEngineOptimization'])->name('searchEngineOptimization
+    .submit_searchEngineOptimization');
+    
+    Route::get("erp-crms-custom-development",'erpCrmsCustomDevelopment')->name('erp-crms-custom-development');
+    Route::get("vat-registration-services-uae-dubai",'vatRegistrationServices')->name('vat-registration-services-uae-dubai');
+    Route::get("quick-enquiry",'quickEnquiry')->name('quick-enquiry');
+    Route::get("share-your-feedback",'feedbacks')->name('share-your-feedback');
+    Route::get("pages/{slug}",'pages')->name('pages');
+    Route::get("corporate-funding",'corporatefunding')->name('corporate-funding');
+    Route::get("accounts-and-book-keeping",'accountsandbooks')->name('accounts-and-book-keeping');
+    Route::get("ai-lab",'solutionwithai')->name('ai-lab');
+    
+     Route::get("accounts-and-book-keeping",'accountsBbookKeeping')->name('accounts-and-book-keeping');
+     
+      Route::get("fetch-subservice/{id}",'fetchSubServceOptions')->name('fetch-subservice');
+      Route::post("book-appointments",'storeAppointment')->name('book-appointments');
+
+      Route::post('/quotation-submit', [FrontController::class, 'submitQuotation'])->name('front.quotation.submit');
+      Route::get("ajman-offshore", [FrontController::class, 'ajmanoffshore'])->name('ajman-offshore');
+      
+       Route::post('/ajman-offshore', [FrontController::class, 'submit_ajmanoffshore'])->name('ajmanoffshore.submit_ajmanoffshore');
+       Route::get("ras-al-khaimah-offshore", [FrontController::class, 'ras'])->name('ras-al-khaimah-offshore');
+        Route::post('/ras-al-khaimah-offshore', [FrontController::class, 'submit_ras'])->name('ras.submit_ras');
+       Route::post('submit-package', [FrontController::class, 'submit_package'])->name('submit.package');
+       
+       Route::post('mobileVerify', [FrontController::class, 'sendMobileOTP'])->name('mobileVerify');
+       Route::post('verifyOTP', [FrontController::class, 'verifyOTP'])->name('verifyOTP');
+});
+
+
+
+
+Route::get('thank-you',function(){ 
+return view('front.thank-you');
+})->name('thank-you');
+
+
+Route::get('error-page',function(){ 
+return view('front.error-page');
+})->name('error-page');
+
+
+//admin panel
+Auth::routes(['register' => true]);
+// Admin Routes list
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::post('get-states-by-country', [FrontUserController::class, 'getState'])->name('getState');
+    Route::post('get-cities-by-state', [FrontUserController::class, 'getCity'])->name('getCity');
+
+    Route::middleware(['auth', 'isAdmin'])->group(function () {
+          /****************************************
+           *     START DASHBOARD
+           * ****************************************/
+          Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+          /********************************************
+           *      START MANAGE CAREER
+           * ******************************************/
+          Route::get('/manage-career', [HomePageController::class, 'career'])->name('manage-career.career');
+          Route::get('/manage-career/edit/{id}', [HomePageController::class, 'career_edit'])->name('manage-career.edit');
+          Route::post('/manage-career/update', [HomePageController::class, 'career_update'])->name('manage-career.update');
+          Route::get('/manage-apply', [HomePageController::class, 'manageApply'])->name('manageApply');
+          Route::post('/manage-apply/store', [HomePageController::class, 'storeApply'])->name('storeApply');
+          Route::get('/manage-signup', [HomePageController::class, 'manageSignup'])->name('manageSignup');
+          Route::post('/manage-signup/store', [HomePageController::class, 'storeSignup'])->name('storeSignup');
+          Route::resource('/manage-servicers', ServiceController::class);
+
+
+          /********************************************
+           *   START MANAGE PAGE SEO
+           * *****************************************/
+          Route::resource('/manage-page-seo', SeoMetaController::class);
+
+          
+
+          /********************************************
+           *   START MANAGE FEEDBACK
+           * *****************************************/
+          Route::resource('/manage-feedback', FeedbackController::class);
+
+          /********************************************
+           *   START MANAGE CONTACT US
+           * *****************************************/
+          Route::resource('/manage-contact-us', ContactUsController::class);
+
+          
+
+          /********************************************
+           *   START MANAGE BLOG CATEGORY
+           * *****************************************/
+          Route::resource('/manage-blog-category', BlogCategoryController::class);
+          Route::resource('/manage-blog', BlogController::class);
+    
+          Route::post('/image-upload', [CommonController::class, 'imageUpload'])->name('image-upload');
+          /********************************************
+           *   START MANAGE BLOG
+           * *****************************************/
+          Route::resource('/manage-blog', BlogController::class);
+           Route::resource('/manage-sections', SectionSettingController::class);
+           Route::resource('/manage-business', BusinessController::class);
+            Route::resource('/manage-visa', VisaController::class);
+            Route::resource('/manage-quotation', QuotationController::class);
+            Route::resource('/manage-offers', OfferController::class);
+              
+
+                Route::get('/manage-offersdetails', [OfferController::class, 
+                'offerdeatils'])->name('manage-offersdetails');
+                 Route::delete('/manage-offersdetails/{id}', [OfferController::class, 
+                'offerdeatilsdelete'])->name('manage-offersdetails.delete');
+                 Route::resource('/manage-packages', PackageController::class);
+                  Route::get('/manage-packagedeatils', [PackageController::class, 
+                'packagedeatils'])->name('manage-packagedeatils');
+                
+                Route::delete('/manage-packagedeatils/{id}', [PackageController::class, 
+                'packagedeatilsdelete'])->name('manage-packagedeatils.delete');
+                
+                  Route::resource('/manage-contact', ContactController::class);
+                  
+                  
+
+          /********************************************
+           *   START MANAGE TESTIMONIAL
+           * *****************************************/
+          Route::resource('/manage-testimonial', TestimonialController::class);
+
+          /********************************************
+           *   START MANAGE FAQ AND CATEGORY
+           * *****************************************/
+          Route::resource('/manage-pages', PageController::class);
+         
+          Route::resource('/manage-faq', FaqController::class);
+          
+          /********************************************
+           *   START MANAGE GENERAL SETTING
+           * *****************************************/
+          Route::resource('/manage-general-setting', GeneralSettingController::class);
+
+         
+
+          /********************************************
+           *   START MANAGE COUNTRY STATE AND CITY
+           * *****************************************/
+          Route::resource('/manage-country', CountryController::class);
+          Route::resource('/manage-state', StateController::class);
+          Route::resource('/manage-city', CityController::class);
+
+          
+
+          #Blank Pages
+          Route::post('resetpassword', [GeneralSettingController::class, 'resetPassword'])->name('resetPassword');
+
+          Route::resource('/profile-setting', ProfileSettingController::class);
+
+      
+          Route::post('/logout', [LogoutController::class, 'logout']);
+
+         
+         
+           Route::get('/sitemap', [InvestTypeController::class, 'generateSitemap'])->name('generateSitemap');
+
+
+    });
+});

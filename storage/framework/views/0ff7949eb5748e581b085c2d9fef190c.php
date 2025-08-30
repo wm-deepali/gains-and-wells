@@ -1,0 +1,1 @@
+<?php /**PATH /home/overseasconsulta/public_html/indcorp/resources/views/front/labour-law-epfo.blade.php ENDPATH**/ ?>
